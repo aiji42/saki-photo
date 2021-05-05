@@ -6,6 +6,7 @@ import { Carousel } from 'react-responsive-carousel'
 import Head from 'next/head'
 import Image from 'next/image'
 import { Pricing } from '../components/Pricing'
+import { Form } from '../components/Form'
 
 interface TopProps {
   data: Site
@@ -30,6 +31,7 @@ const Top: FC<TopProps> = ({ data }) => {
       <h2 className="mt-8 text-center text-lg">価格</h2>
       {data.pricings.pricings.map((pricing, index) => (<Pricing {...pricing} key={index} />))}
       {data.pricings.note && <div dangerouslySetInnerHTML={{ __html: data.pricings.note }} />}
+      <Form />
     </>
   )
 }
