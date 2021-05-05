@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, Fragment } from 'react'
 import { GetStaticProps } from 'next'
 import { Site } from '../types/site'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
@@ -19,6 +19,13 @@ const Top: FC<TopProps> = ({ data }) => {
     <Carousel showArrows={false} showStatus={false} showThumbs={false} infiniteLoop>
       {data.mainVisuals.map(({ photo }, index) => (<Image key={index} src={photo.url} width={photo.width} height={photo.height} layout="responsive" />))}
     </Carousel>
+    <h1 className="mt-8 text-center text-lg">作例</h1>
+    {data.products.map(({ title, photos }, index) => (
+      <Fragment key={index}>
+        <h2>{title}</h2>
+        {photos.map(({ photo }, index) => (<Image key={index} src={photo.url} width={photo.width} height={photo.height} layout="responsive" />))}
+      </Fragment>
+    ))}
   </>)
 }
 
