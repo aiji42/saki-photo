@@ -1,4 +1,4 @@
-import { FC, Fragment } from 'react'
+import { FC, Fragment, useEffect, useState } from 'react'
 import { GetStaticProps } from 'next'
 import { Site } from '../types/site'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
@@ -8,12 +8,23 @@ import Image from 'next/image'
 import { Pricing } from '../components/Pricing'
 import { Form } from '../components/Form'
 import { Profile } from '../components/Profile'
+import { useRouter } from 'next/router'
 
 interface TopProps {
   data: Site
 }
 
-const Top: FC<TopProps> = ({ data }) => {
+const Top: FC<TopProps> = ({ data: serverSideData }) => {
+  const [data, setData] = useState(serverSideData)
+  const router = useRouter()
+  useEffect(() => {
+    if (!router.query.preview) return
+    fetch(`/api/preview?draftKey=${router.query.preview}`)
+      .then(res => res.json())
+      .then(setData)
+      .catch(() => null)
+  }, [router])
+
   return (
     <>
       <Head>
