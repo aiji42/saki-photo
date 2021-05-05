@@ -1,19 +1,19 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import Head from 'next/head'
+import { useInView } from 'react-intersection-observer'
 
 export const Form: FC = () => {
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  const { ref, inView } = useInView({
+    threshold: 0,
+    rootMargin: '500px'
+  })
 
-  if (!mounted) return null
   return (
     <>
       <Head>
-        <script src="https://sdk.form.run/js/v2/embed.js" async />
+        {inView && <script src="https://sdk.form.run/js/v2/embed.js" async />}
       </Head>
-      <div className="mt-8 formrun-embed" data-formrun-form="@saki-photo" />
+      <div ref={ref} className="mt-8 formrun-embed" data-formrun-form="@saki-photo" />
     </>
   )
 }
