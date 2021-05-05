@@ -1,5 +1,5 @@
-import { FC, useEffect, useState } from "react"
-import Head from 'next/head';
+import { FC, useEffect, useState } from 'react'
+import Head from 'next/head'
 
 export const Form: FC = () => {
   const [mounted, setMounted] = useState(false)
