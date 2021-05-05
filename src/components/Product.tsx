@@ -11,9 +11,10 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
         breakpointCols={{
           default: 3,
           1100: 3,
-          700: 2
+          700: 2,
+          500: 1
         }}
-        className="mt-4 flex w-auto"
+        className="mt-4 mb-16 flex w-auto"
       >
         {photos.map(({ photo }, index) => (
           <Image
