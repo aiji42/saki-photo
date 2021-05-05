@@ -32,6 +32,7 @@ const Top: FC<TopProps> = ({ data: serverSideData }) => {
     <>
       <Head>
         <title>{data.meta.title}</title>
+        {!!data.meta.description && <meta name="description" content={data.meta.description} />}
       </Head>
       <h1 className="absolute top-1/3 text-center w-full text-gray-200 text-xl z-10">{data.title}</h1>
       <MainVisual mainVisuals={data.mainVisuals} />

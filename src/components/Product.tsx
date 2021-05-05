@@ -23,6 +23,7 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
             width={photo.width}
             height={photo.height}
             layout="responsive"
+            alt={`${title}${index + 1}枚目`}
           />
         ))}
       </Masonry>

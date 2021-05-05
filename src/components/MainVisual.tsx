@@ -18,6 +18,8 @@ export const MainVisual: FC<Pick<Site, 'mainVisuals'>> = ({ mainVisuals }) => {
             width={photo.width}
             height={photo.height}
             layout="responsive"
+            alt={`メインビジュアル${index + 1}枚目`}
+            priority={index === 0}
           />
         ))}
       </Carousel>
