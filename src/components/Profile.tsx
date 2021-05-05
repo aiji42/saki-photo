@@ -10,6 +10,7 @@ export const Profile: FC<ProfileType> = ({ name, icon, snsLinks, body }) => {
         <Image
           className="object-cover w-full h-full"
           src={icon.url}
+          alt={name}
           width={icon.width}
           height={icon.height}
         />
@@ -30,7 +31,7 @@ export const Profile: FC<ProfileType> = ({ name, icon, snsLinks, body }) => {
               rel="noopener noreferrer"
               key={index}
             >
-              <Image src="/instagram.svg" width={25} height={25} />
+              <Image src="/instagram.svg" alt="instagram" width={25} height={25} />
             </a>
           ) : null
         )}

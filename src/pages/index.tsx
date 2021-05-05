@@ -9,6 +9,8 @@ import { Pricing } from '../components/Pricing'
 import { Form } from '../components/Form'
 import { Profile } from '../components/Profile'
 import { useRouter } from 'next/router'
+import Masonry from 'react-masonry-css'
+import { Product } from '../components/Product'
 
 interface TopProps {
   data: Site
@@ -47,27 +49,15 @@ const Top: FC<TopProps> = ({ data: serverSideData }) => {
         ))}
       </Carousel>
       <Profile {...data.profile} />
-      <h2 className="mt-8 text-center text-lg">作例</h2>
-      {data.products.map(({ title, photos }, index) => (
-        <Fragment key={index}>
-          <h3>{title}</h3>
-          {photos.map(({ photo }, index) => (
-            <Image
-              key={index}
-              src={photo.url}
-              width={photo.width}
-              height={photo.height}
-              layout="responsive"
-            />
-          ))}
-        </Fragment>
+      {data.products.map((product, index) => (
+        <Product key={index} {...product} />
       ))}
       <h2 className="mt-8 text-center text-lg">Price</h2>
       {data.pricings.pricings.map((pricing, index) => (
         <Pricing {...pricing} key={index} />
       ))}
       {data.pricings.note && (
-        <div dangerouslySetInnerHTML={{ __html: data.pricings.note }} />
+        <div className="mt-8 text-center" dangerouslySetInnerHTML={{ __html: data.pricings.note }} />
       )}
       <Form />
     </>
