@@ -33,7 +33,7 @@ const Top: FC<TopProps> = ({ data: serverSideData }) => {
       <Head>
         <title>{data.meta.title}</title>
       </Head>
-      <h1 className="absolute top-1/3 text-center w-full text-gray-200 text-xl z-10">saki_photo</h1>
+      <h1 className="absolute top-1/3 text-center w-full text-gray-200 text-xl z-10">{data.title}</h1>
       <MainVisual mainVisuals={data.mainVisuals} />
       <Profile {...data.profile} />
       {data.products.map((product, index) => (
