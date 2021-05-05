@@ -31,13 +31,13 @@ export interface Pricings {
 }
 
 export interface SnsLink {
-  type: 'instagram' | 'twitter' | 'line'
+  type: Array<'instagram' | 'twitter' | 'line'>
   account?: string
   url: string
 }
 
 export interface Profile {
-  icon: string
+  icon: Image
   name: string
   body?: string
   snsLinks?: Array<SnsLink>

@@ -7,6 +7,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Pricing } from '../components/Pricing'
 import { Form } from '../components/Form'
+import { Profile } from '../components/Profile'
 
 interface TopProps {
   data: Site
@@ -21,6 +22,7 @@ const Top: FC<TopProps> = ({ data }) => {
       <Carousel showArrows={false} showStatus={false} showThumbs={false} infiniteLoop>
         {data.mainVisuals.map(({ photo }, index) => (<Image key={index} src={photo.url} width={photo.width} height={photo.height} layout="responsive" />))}
       </Carousel>
+      <Profile {...data.profile} />
       <h2 className="mt-8 text-center text-lg">作例</h2>
       {data.products.map(({ title, photos }, index) => (
         <Fragment key={index}>
