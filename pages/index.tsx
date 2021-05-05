@@ -41,7 +41,7 @@ const Top: FC<TopProps> = ({ data: serverSideData }) => {
           {photos.map(({ photo }, index) => (<Image key={index} src={photo.url} width={photo.width} height={photo.height} layout="responsive" />))}
         </Fragment>
       ))}
-      <h2 className="mt-8 text-center text-lg">価格</h2>
+      <h2 className="mt-8 text-center text-lg">Price</h2>
       {data.pricings.pricings.map((pricing, index) => (<Pricing {...pricing} key={index} />))}
       {data.pricings.note && <div dangerouslySetInnerHTML={{ __html: data.pricings.note }} />}
       <Form />
