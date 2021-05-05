@@ -11,6 +11,7 @@ import { Profile } from '../components/Profile'
 import { useRouter } from 'next/router'
 import Masonry from 'react-masonry-css'
 import { Product } from '../components/Product'
+import { MainVisual } from '../components/MainVisual'
 
 interface TopProps {
   data: Site
@@ -32,22 +33,8 @@ const Top: FC<TopProps> = ({ data: serverSideData }) => {
       <Head>
         <title>{data.meta.title}</title>
       </Head>
-      <Carousel
-        showArrows={false}
-        showStatus={false}
-        showThumbs={false}
-        infiniteLoop
-      >
-        {data.mainVisuals.map(({ photo }, index) => (
-          <Image
-            key={index}
-            src={photo.url}
-            width={photo.width}
-            height={photo.height}
-            layout="responsive"
-          />
-        ))}
-      </Carousel>
+      <h1 className="absolute top-1/3 text-center w-full text-gray-200 text-xl z-10">saki_photo</h1>
+      <MainVisual mainVisuals={data.mainVisuals} />
       <Profile {...data.profile} />
       {data.products.map((product, index) => (
         <Product key={index} {...product} />
