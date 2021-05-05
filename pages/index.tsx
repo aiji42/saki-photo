@@ -51,6 +51,7 @@ export const getStaticProps: GetStaticProps<TopProps> = async () => {
   return {
     props: {
       data
-    }
+    },
+    revalidate: 5
   }
 }
