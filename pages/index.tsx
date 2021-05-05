@@ -1,7 +1,13 @@
 import { FC } from 'react'
 import { GetStaticProps } from 'next'
+import { Site } from '../types/site'
 
-const Top: FC = () => {
+interface TopProps {
+  data: Site
+}
+
+const Top: FC<TopProps> = ({ data }) => {
+  console.log(data)
   return null
 }
 
@@ -14,8 +20,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const data = await fetch(`${process.env.MICRO_CMS_API_ENDPOINT}/site`, key)
     .then(res => res.json())
     .catch(() => null)
-
-  console.log(data)
 
   return {
     props: {
