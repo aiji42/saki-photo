@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { Product as ProductType } from "../types/site";
-import Image from 'next/image';
-import Masonry from 'react-masonry-css';
+import { FC } from 'react'
+import { Product as ProductType } from '../types/site'
+import Image from 'next/image'
+import Masonry from 'react-masonry-css'
 
 export const Product: FC<ProductType> = ({ title, photos }) => {
   return (

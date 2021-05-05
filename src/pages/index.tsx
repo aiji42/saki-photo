@@ -57,7 +57,10 @@ const Top: FC<TopProps> = ({ data: serverSideData }) => {
         <Pricing {...pricing} key={index} />
       ))}
       {data.pricings.note && (
-        <div className="mt-8 text-center" dangerouslySetInnerHTML={{ __html: data.pricings.note }} />
+        <div
+          className="mt-8 text-center"
+          dangerouslySetInnerHTML={{ __html: data.pricings.note }}
+        />
       )}
       <Form />
     </>
