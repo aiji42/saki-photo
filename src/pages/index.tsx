@@ -1,15 +1,12 @@
-import { FC, Fragment, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { GetStaticProps } from 'next'
 import { Site } from '../types/site'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
-import { Carousel } from 'react-responsive-carousel'
 import Head from 'next/head'
-import Image from 'next/image'
 import { Pricing } from '../components/Pricing'
 import { Form } from '../components/Form'
 import { Profile } from '../components/Profile'
 import { useRouter } from 'next/router'
-import Masonry from 'react-masonry-css'
 import { Product } from '../components/Product'
 import { MainVisual } from '../components/MainVisual'
 
@@ -32,25 +29,31 @@ const Top: FC<TopProps> = ({ data: serverSideData }) => {
     <>
       <Head>
         <title>{data.meta.title}</title>
-        {!!data.meta.description && <meta name="description" content={data.meta.description} />}
+        {!!data.meta.description && (
+          <meta name="description" content={data.meta.description} />
+        )}
       </Head>
-      <h1 className="absolute top-1/3 text-center w-full text-gray-200 text-xl z-10">{data.title}</h1>
-      <MainVisual mainVisuals={data.mainVisuals} />
-      <Profile {...data.profile} />
-      {data.products.map((product, index) => (
-        <Product key={index} {...product} />
-      ))}
-      <h2 className="mt-8 text-center text-lg">Price</h2>
-      {data.pricings.pricings.map((pricing, index) => (
-        <Pricing {...pricing} key={index} />
-      ))}
-      {data.pricings.note && (
-        <div
-          className="mt-8 text-center"
-          dangerouslySetInnerHTML={{ __html: data.pricings.note }}
-        />
-      )}
-      <Form />
+      <div className="max-w-4xl mx-auto">
+        <h1 className="absolute top-1/3 text-center w-full text-gray-200 text-xl z-10 max-w-4xl">
+          {data.title}
+        </h1>
+        <MainVisual mainVisuals={data.mainVisuals} />
+        <Profile {...data.profile} />
+        {data.products.map((product, index) => (
+          <Product key={index} {...product} />
+        ))}
+        <h2 className="mt-8 text-center text-lg">Price</h2>
+        {data.pricings.pricings.map((pricing, index) => (
+          <Pricing {...pricing} key={index} />
+        ))}
+        {data.pricings.note && (
+          <div
+            className="mt-8 text-center"
+            dangerouslySetInnerHTML={{ __html: data.pricings.note }}
+          />
+        )}
+        <Form />
+      </div>
     </>
   )
 }

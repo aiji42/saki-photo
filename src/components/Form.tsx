@@ -13,7 +13,11 @@ export const Form: FC = () => {
       <Head>
         {inView && <script src="https://sdk.form.run/js/v2/embed.js" async />}
       </Head>
-      <div ref={ref} className="mt-8 formrun-embed" data-formrun-form="@saki-photo" />
+      <div
+        ref={ref}
+        className="mt-8 formrun-embed"
+        data-formrun-form="@saki-photo"
+      />
     </>
   )
 }
