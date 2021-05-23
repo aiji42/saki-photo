@@ -6,7 +6,7 @@ import Masonry from 'react-masonry-css'
 export const Product: FC<ProductType> = ({ title, photos }) => {
   return (
     <>
-      <h2 className="text-center text-xl">{title}</h2>
+      <h2 className="text-center text-xl font-serif">{title}</h2>
       <Masonry
         breakpointCols={{
           default: 3,
