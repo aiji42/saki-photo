@@ -16,9 +16,9 @@ export const Profile: FC<ProfileType> = ({ name, icon, snsLinks, body }) => {
         />
       </div>
       <div className="mt-16">
-        <h2 className="text-lg text-center font-semibold">{name}</h2>
+        <h2 className="font-heading text-lg text-center font-semibold">{name}</h2>
         <div
-          className="text-sm text-gray-600 text-center"
+          className="font-serif text-sm text-center"
           dangerouslySetInnerHTML={{ __html: body ?? '' }}
         />
       </div>
