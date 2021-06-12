@@ -63,12 +63,12 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
             onScreenChange={(active) => setActiveGallery(active)}
             renderFullscreenButton={(onClick) => (
               <div
-                className="absolute top-3 left-3 text-white text-xl"
+                className="absolute right-2 bottom-2"
                 onClick={onClick}
               >
                 <img
                   src="/close-icon.svg"
-                  className="w-6"
+                  className="w-8"
                   loading="lazy"
                   style={{ filter: 'drop-shadow(1px 1px 2px #000)' }}
                 />
