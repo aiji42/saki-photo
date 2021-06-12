@@ -33,8 +33,8 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
               <Image
                 key={index}
                 src={photo.url}
-                width={photo.width}
-                height={photo.height}
+                width={photo.width * 0.3}
+                height={photo.height * 0.3}
                 layout="responsive"
                 alt={`${title}${index + 1}枚目`}
               />

@@ -16,8 +16,8 @@ export const MainVisual: FC<Pick<Site, 'mainVisuals'>> = ({ mainVisuals }) => {
           <div key={index} className="max-h-screen">
             <Image
               src={photo.url}
-              width={photo.width}
-              height={photo.height}
+              width={photo.width * 0.3}
+              height={photo.height * 0.3}
               layout="responsive"
               alt={`メインビジュアル${index + 1}枚目`}
               priority={index === 0}
