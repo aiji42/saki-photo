@@ -10,9 +10,8 @@ export const Pricing: FC<PricingItem> = ({ title, body, image }) => {
           <Image
             src={image.url}
             alt={title}
-            layout="responsive"
-            width={image.width}
-            height={image.height}
+            width={image.width * 0.3}
+            height={image.height * 0.3}
           />
         </div>
       )}
