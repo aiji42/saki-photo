@@ -39,10 +39,13 @@ const Top: FC<TopProps> = ({ data: serverSideData }) => {
         </h1>
         <MainVisual mainVisuals={data.mainVisuals} />
         <Profile {...data.profile} />
+        <h2 className="mb-10 text-center font-serif text-4xl text-gray-600">
+          Gallery
+        </h2>
         {data.products.map((product, index) => (
           <Product key={index} {...product} />
         ))}
-        <h2 className="mt-8 text-center text-lg">Price</h2>
+        <h2 className="mb-10 text-center text-lg font-serif">Price</h2>
         {data.pricings.pricings.map((pricing, index) => (
           <Pricing {...pricing} key={index} />
         ))}
