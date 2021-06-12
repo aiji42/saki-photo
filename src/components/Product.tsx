@@ -12,16 +12,18 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
 
   return (
     <>
-      <h3 className="text-2xl text-center font-serif text-gray-600">{title}</h3>
-      <div className="mt-4 mb-16">
+      <h3 className="font-heading text-center text-2xl tracking-widest">
+        {title}
+      </h3>
+      <div className="mt-2">
         <Masonry
-          className="flex w-auto"
           breakpointCols={{
             default: 3,
             1024: 3,
             768: 2,
             640: 1
           }}
+          className="flex w-auto"
         >
           {photos.map(({ photo }, index) => (
             <div
@@ -29,6 +31,7 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
               className={`px-2 sm:px-1 py-1 ${index > 3 && 'hidden sm:block'}`}
             >
               <Image
+                key={index}
                 src={photo.url}
                 width={photo.width}
                 height={photo.height}
@@ -43,7 +46,7 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
             onClick={() => {
               ref.current?.fullScreen()
             }}
-            className="inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-gray-700 uppercase transition bg-transparent border border-gray-700 rounded-full ripple hover:bg-gray-100 focus:outline-none waves-effect font-serif"
+            className="inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-gray-700 uppercase transition bg-transparent border border-gray-700 rounded-full ripple hover:bg-gray-100 focus:outline-none waves-effect"
           >
             More
           </button>
@@ -62,10 +65,7 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
             }))}
             onScreenChange={(active) => setActiveGallery(active)}
             renderFullscreenButton={(onClick) => (
-              <div
-                className="absolute right-2 bottom-2"
-                onClick={onClick}
-              >
+              <div className="absolute right-2 bottom-2" onClick={onClick}>
                 <img
                   src="/close-icon.svg"
                   className="w-8"

@@ -9,6 +9,7 @@ import { Profile } from '../components/Profile'
 import { useRouter } from 'next/router'
 import { Product } from '../components/Product'
 import { MainVisual } from '../components/MainVisual'
+import { Concept } from '../components/Concept'
 
 interface TopProps {
   data: Site
@@ -33,69 +34,45 @@ const Top: FC<TopProps> = ({ data: serverSideData }) => {
           <meta name="description" content={data.meta.description} />
         )}
       </Head>
-      <div className="max-w-4xl mx-auto">
-        <h1 className="absolute top-1/3 text-center w-full text-gray-200 text-xl z-10 max-w-4xl">
-          {data.title}
-        </h1>
-        <MainVisual mainVisuals={data.mainVisuals} />
-        <div className="my-12 pb-6 w-full font-serif text-gray-600 text-center text-base md:text-lg">
-          <p>
-            今しかない、かけがえのないこの瞬間。
+      <div className="font-serif bg-white leading-7">
+        <section className="relative flex flex-col justify-center items-center">
+          <MainVisual mainVisuals={data.mainVisuals} />
+          <h1 className="font-heading absolute top-1/3 text-white text-2xl">
+            {data.title}
             <br />
-            型にはまった撮影だけじゃつまらない。
-            <br />
-            <br />
-            お客様だけの空気感を大切にした撮影
-            <br />×<br />
-            お客様のお好みや雰囲気に合わせた
-            <br />
-            オーダーメイドのレタッチで
-            <br />
-            <br />
-            お客様らしい、
-            <br />
-            世界にひとつだけのお写真をお撮りします。
-            <br />
-            <br />
-            いつかこの写真を見返したとき、
-            <br />
-            この幸せな瞬間や懐かしい日々を
-          </p>
-          <p style={{ textAlign: 'center' }}>
-            思い出すきっかけになりますように。
-          </p>
-          <p style={{ textAlign: 'center' }}>
-            <br />
-          </p>
-        </div>
-        <div className="py-3">
-          <h2 className="text-center font-serif text-4xl text-gray-600">
-            Gallery
-          </h2>
-          <div className="my-3 mb-10 border border-gray-300 w-14 mx-auto" />
+            <span className="text-sm">photography</span>
+          </h1>
+        </section>
+        <Concept {...data.profile} />
+        <section className="py-20 text-center">
+          <h2 className="font-heading text-4xl tracking-widest">Gallery</h2>
+          <span className="w-8 border border-black block m-auto mt-4" />
           {data.products.map((product, index) => (
-            <Product key={index} {...product} />
+            <div className="mt-10" key={index}>
+              <Product {...product} />
+            </div>
           ))}
-        </div>
-        <div className="py-3">
-          <h2 className="text-center font-serif text-4xl text-gray-600">
+        </section>
+        <section className="py-20 bg-gray-100">
+          <h2 className="font-heading text-4xl text-center tracking-widest">
             Price
           </h2>
-          <div className="my-3 mb-10 border border-gray-300 w-14 mx-auto" />{' '}
+          <span className="w-8 border border-black block m-auto mt-4" />
           {data.pricings.pricings.map((pricing, index) => (
-            <Pricing {...pricing} key={index} />
+            <div className="mt-10" key={index}>
+              <Pricing {...pricing} />
+            </div>
           ))}
           {data.pricings.note && (
             <div
-              className="px-4 text-center text-gray-600 text-base"
+              className="mt-6 mx-6 p-4 text-sm leading-6 bg-gray-50 max-w-screen-lg md:m-auto"
               dangerouslySetInnerHTML={{ __html: data.pricings.note }}
             />
           )}
-        </div>
-        <div className="py-3">
-          <div className="my-6 border border-gray-300 w-14 mx-auto" />
+        </section>
+        <section className="py-20 text-center">
           <Profile {...data.profile} />
-        </div>
+        </section>
         <Form />
       </div>
     </>
