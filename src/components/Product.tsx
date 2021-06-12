@@ -58,7 +58,6 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
             showPlayButton={false}
             items={photos.map(({ photo }) => ({
               original: photo.url,
-              thumbnail: photo.url,
               originalHeight: photo.height,
               originalWidth: photo.width
             }))}
@@ -66,20 +65,17 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
               <Image
                 key={original}
                 src={original}
+                layout="responsive"
                 height={(originalHeight ?? 0) * 0.3}
                 width={(originalWidth ?? 0) * 0.3}
               />
             )}
-            renderThumbInner={({
-              thumbnail,
-              originalHeight,
-              originalWidth
-            }) => (
+            renderThumbInner={({ original, originalHeight, originalWidth }) => (
               <Image
-                key={thumbnail}
-                src={thumbnail ?? ''}
-                height={(originalHeight ?? 0) * 0.3}
-                width={(originalWidth ?? 0) * 0.3}
+                key={original}
+                src={original}
+                width={75}
+                height={((originalHeight ?? 0) * 75) / (originalWidth ?? 100)}
               />
             )}
             onScreenChange={(active) => setActiveGallery(active)}
