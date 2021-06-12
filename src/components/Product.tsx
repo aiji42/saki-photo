@@ -12,9 +12,7 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
 
   return (
     <>
-      <h3 className="text-2xl text-center font-serif text-gray-600">
-        {title}
-      </h3>
+      <h3 className="text-2xl text-center font-serif text-gray-600">{title}</h3>
       <div className="mt-4 mb-16">
         <Masonry
           className="flex w-auto"
@@ -56,7 +54,6 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
             lazyLoad
             startIndex={3}
             showPlayButton={false}
-            showBullets
             items={photos.map(({ photo }) => ({
               original: photo.url,
               thumbnail: photo.url,
@@ -64,6 +61,19 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
               originalWidth: photo.width
             }))}
             onScreenChange={(active) => setActiveGallery(active)}
+            renderFullscreenButton={(onClick) => (
+              <div
+                className="absolute top-3 left-3 text-white text-xl"
+                onClick={onClick}
+              >
+                <img
+                  src="/close-icon.svg"
+                  className="w-6"
+                  loading="lazy"
+                  style={{ filter: 'drop-shadow(1px 1px 2px #000)' }}
+                />
+              </div>
+            )}
           />
         </div>
       </div>
