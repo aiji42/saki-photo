@@ -1,4 +1,5 @@
 import '../styles/global.css'
+import '../styles/gallery.scss'
 import 'destyle.css/destyle.css'
 import { AppProps } from 'next/app'
 import { FC } from 'react'

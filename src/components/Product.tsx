@@ -3,9 +3,11 @@ import { Product as ProductType } from '../types/site'
 import Image from 'next/image'
 import Masonry from 'react-masonry-css'
 import ImageGallery from 'react-image-gallery'
+import useLockBodyScroll from 'react-use/lib/useLockBodyScroll'
 
 export const Product: FC<ProductType> = ({ title, photos }) => {
   const [activeGallery, setActiveGallery] = useState(false)
+  useLockBodyScroll(activeGallery)
   const ref = useRef<ImageGallery>(null)
 
   return (
