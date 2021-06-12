@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export const Pricing: FC<PricingItem> = ({ title, body, image }) => {
   return (
-    <div className="container px-6 py-10 mx-auto md:py-16 text-center md:text-left">
+    <div className="container px-4 pb-14 mx-auto md:pb-12 text-center md:text-left">
       <div className="flex flex-col space-y-6 md:flex-row md:items-center md:space-x-6">
         {image && (
           <div className="flex items-center justify-center w-full md:w-1/2">
@@ -21,10 +21,13 @@ export const Pricing: FC<PricingItem> = ({ title, body, image }) => {
         )}
         <div className="w-full md:w-1/2">
           <div className="max-w-md mx-auto">
-            <h3 className="text-2xl font-medium tracking-wide text-gray-800">
+            <h3 className="text-2xl font-medium tracking-wide text-gray-800 font-serif">
               {title}
             </h3>
-            <div className="mt-4" dangerouslySetInnerHTML={{ __html: body }} />
+            <div
+              className="mt-4 text-gray-600 text-base"
+              dangerouslySetInnerHTML={{ __html: body }}
+            />
           </div>
         </div>
       </div>

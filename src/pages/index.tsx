@@ -38,23 +38,64 @@ const Top: FC<TopProps> = ({ data: serverSideData }) => {
           {data.title}
         </h1>
         <MainVisual mainVisuals={data.mainVisuals} />
-        <Profile {...data.profile} />
-        <h2 className="mb-10 text-center font-serif text-4xl text-gray-600">
-          Gallery
-        </h2>
-        {data.products.map((product, index) => (
-          <Product key={index} {...product} />
-        ))}
-        <h2 className="mb-10 text-center text-lg font-serif">Price</h2>
-        {data.pricings.pricings.map((pricing, index) => (
-          <Pricing {...pricing} key={index} />
-        ))}
-        {data.pricings.note && (
-          <div
-            className="mt-8 text-center"
-            dangerouslySetInnerHTML={{ __html: data.pricings.note }}
-          />
-        )}
+        <div className="my-12 pb-6 w-full font-serif text-gray-600 text-center text-base md:text-lg">
+          <p>
+            今しかない、かけがえのないこの瞬間。
+            <br />
+            型にはまった撮影だけじゃつまらない。
+            <br />
+            <br />
+            お客様だけの空気感を大切にした撮影
+            <br />×<br />
+            お客様のお好みや雰囲気に合わせた
+            <br />
+            オーダーメイドのレタッチで
+            <br />
+            <br />
+            お客様らしい、
+            <br />
+            世界にひとつだけのお写真をお撮りします。
+            <br />
+            <br />
+            いつかこの写真を見返したとき、
+            <br />
+            この幸せな瞬間や懐かしい日々を
+          </p>
+          <p style={{ textAlign: 'center' }}>
+            思い出すきっかけになりますように。
+          </p>
+          <p style={{ textAlign: 'center' }}>
+            <br />
+          </p>
+        </div>
+        <div className="py-3">
+          <h2 className="text-center font-serif text-4xl text-gray-600">
+            Gallery
+          </h2>
+          <div className="my-3 mb-10 border border-gray-300 w-14 mx-auto" />
+          {data.products.map((product, index) => (
+            <Product key={index} {...product} />
+          ))}
+        </div>
+        <div className="py-3">
+          <h2 className="text-center font-serif text-4xl text-gray-600">
+            Price
+          </h2>
+          <div className="my-3 mb-10 border border-gray-300 w-14 mx-auto" />{' '}
+          {data.pricings.pricings.map((pricing, index) => (
+            <Pricing {...pricing} key={index} />
+          ))}
+          {data.pricings.note && (
+            <div
+              className="px-4 text-center text-gray-600 text-base"
+              dangerouslySetInnerHTML={{ __html: data.pricings.note }}
+            />
+          )}
+        </div>
+        <div className="py-3">
+          <div className="my-6 border border-gray-300 w-14 mx-auto" />
+          <Profile {...data.profile} />
+        </div>
         <Form />
       </div>
     </>

@@ -12,7 +12,9 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
 
   return (
     <>
-      <h3 className="text-center text-xl font-serif text-gray-600">{title}</h3>
+      <h3 className="text-2xl text-center font-serif text-gray-600">
+        {title}
+      </h3>
       <div className="mt-4 mb-16">
         <Masonry
           className="flex w-auto"
@@ -45,7 +47,7 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
             }}
             className="inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-gray-700 uppercase transition bg-transparent border border-gray-700 rounded-full ripple hover:bg-gray-100 focus:outline-none waves-effect font-serif"
           >
-            See More
+            More
           </button>
         </div>
         <div className={activeGallery ? '' : 'hidden'}>
