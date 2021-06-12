@@ -43,7 +43,7 @@ const Top: FC<TopProps> = ({ data: serverSideData }) => {
             <span className="text-sm">photography</span>
           </h1>
         </section>
-        <Concept {...data.profile} />
+        <Concept {...data} />
         <section className="py-20 text-center">
           <h2 className="font-heading text-4xl tracking-widest">Gallery</h2>
           <span className="w-8 border border-black block m-auto mt-4" />
@@ -70,9 +70,7 @@ const Top: FC<TopProps> = ({ data: serverSideData }) => {
             />
           )}
         </section>
-        <section className="py-20 text-center">
-          <Profile {...data.profile} />
-        </section>
+        <Profile {...data.profile} />
         <Form />
       </div>
     </>

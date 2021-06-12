@@ -46,6 +46,7 @@ export interface Profile {
 export interface Site {
   title: string
   mainVisuals: Array<Photo>
+  concept: string
   products: Array<Product>
   pricings: Pricings
   profile: Profile
