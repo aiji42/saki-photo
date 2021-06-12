@@ -54,7 +54,6 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
         <div className={activeGallery ? '' : 'hidden'}>
           <ImageGallery
             ref={ref}
-            lazyLoad
             startIndex={3}
             showPlayButton={false}
             items={photos.map(({ photo }) => ({
@@ -63,6 +62,26 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
               originalHeight: photo.height,
               originalWidth: photo.width
             }))}
+            renderItem={({ original, originalHeight, originalWidth }) => (
+              <Image
+                key={original}
+                src={original}
+                height={(originalHeight ?? 0) * 0.3}
+                width={(originalWidth ?? 0) * 0.3}
+              />
+            )}
+            renderThumbInner={({
+              thumbnail,
+              originalHeight,
+              originalWidth
+            }) => (
+              <Image
+                key={thumbnail}
+                src={thumbnail ?? ''}
+                height={(originalHeight ?? 0) * 0.3}
+                width={(originalWidth ?? 0) * 0.3}
+              />
+            )}
             onScreenChange={(active) => setActiveGallery(active)}
             renderFullscreenButton={(onClick) => (
               <div className="absolute right-2 bottom-2" onClick={onClick}>
