@@ -5,23 +5,26 @@ import { Site } from '../types/site'
 
 export const MainVisual: FC<Pick<Site, 'mainVisuals'>> = ({ mainVisuals }) => {
   return (
-    <Carousel
-      showArrows={false}
-      showStatus={false}
-      showThumbs={false}
-      infiniteLoop
-    >
-      {mainVisuals.map(({ photo }, index) => (
-        <Image
-          key={index}
-          src={photo.url}
-          width={photo.width}
-          height={photo.height}
-          layout="responsive"
-          alt={`メインビジュアル${index + 1}枚目`}
-          priority={index === 0}
-        />
-      ))}
-    </Carousel>
+    <div className="w-full">
+      <Carousel
+        showArrows={false}
+        showStatus={false}
+        showThumbs={false}
+        infiniteLoop
+      >
+        {mainVisuals.map(({ photo }, index) => (
+          <div key={index} className="max-h-screen">
+            <Image
+              src={photo.url}
+              width={photo.width}
+              height={photo.height}
+              layout="responsive"
+              alt={`メインビジュアル${index + 1}枚目`}
+              priority={index === 0}
+            />
+          </div>
+        ))}
+      </Carousel>
+    </div>
   )
 }
