@@ -10,7 +10,12 @@ export const MainVisual: FC<Pick<Site, 'mainVisuals'>> = ({ mainVisuals }) => {
         showArrows={false}
         showStatus={false}
         showThumbs={false}
+        showIndicators={false}
         infiniteLoop
+        autoPlay
+        interval={4000}
+        transitionTime={1000}
+        swipeable={false}
       >
         {mainVisuals.map(({ photo }, index) => (
           <div key={index} className="max-h-screen">
