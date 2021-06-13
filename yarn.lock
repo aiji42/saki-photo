@@ -200,6 +200,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-scroll@^1.8.2":
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/@types/react-scroll/-/react-scroll-1.8.2.tgz#44bbbadabb9014517eb865d6fa47937535a2234a"
+  integrity sha512-oavV6BZLfaIghX4JSmrm6mJkeVayQlmsFx1Rz8ffGjMngHAI/juZkRZM/zV/H5D0pGqjzACvBmKYUU4YBecwLg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^17.0.11":
   version "17.0.11"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.11.tgz#67fcd0ddbf5a0b083a0f94e926c7d63f3b836451"
@@ -3438,6 +3445,14 @@ react-script-hook@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/react-script-hook/-/react-script-hook-1.4.1.tgz#7ec1ba5c5b8f3c178ed47df530a4afb0811907ab"
   integrity sha512-COH8vQ8tqFb/ql3j1ZvV8JjlTjnEB6SVSKdQNiYg79aQmfvjdzkMU2zO0S82luLIC76Brl//+dHKE3DDwAvYXA==
+
+react-scroll@^1.8.2:
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/react-scroll/-/react-scroll-1.8.2.tgz#68e35b74ae296c88e7863393c9fd49f05afa29f5"
+  integrity sha512-f2ZEG5fsPbPTySI9ekcFpETCcNlqbmwbQj9hhzYK8tkgv+PA8APatSt66o/q0KSkDZxyT98ONTtXp9x0lyowEw==
+  dependencies:
+    lodash.throttle "^4.1.1"
+    prop-types "^15.7.2"
 
 react-swipeable@6.0.1:
   version "6.0.1"

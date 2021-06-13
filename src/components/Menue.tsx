@@ -1,13 +1,15 @@
 import { FC } from 'react'
 import useLockBodyScroll from 'react-use/lib/useLockBodyScroll'
 import useToggle from 'react-use/lib/useToggle'
-interface Link {
+import Link from 'react-scroll/modules/components/Link'
+
+interface Item {
   label: string
-  href: string
+  target: string
 }
 
 interface MenueProps {
-  items: Array<Link & { nests?: Array<Link> }>
+  items: Array<Item & { nests?: Array<Item> }>
 }
 
 export const Menue: FC<MenueProps> = ({ items }) => {
@@ -51,24 +53,26 @@ export const Menue: FC<MenueProps> = ({ items }) => {
         className={`${!isOpen && 'scale-0'}
           font-heading transform transition duration-200 ease-in-out`}
       >
-        {items.map(({ nests, label, href }) => (
+        {items.map(({ nests, label, target }) => (
           <div key={label} className="py-4 text-white">
-            <a
-              href={href}
+            <Link
+              smooth
+              to={target}
               onClick={toggle}
               className="block py-2 text-xl hover:text-gray-300"
             >
               {label}
-            </a>
-            {nests?.map(({ label, href }) => (
-              <a
-                href={href}
+            </Link>
+            {nests?.map(({ label, target }) => (
+              <Link
+                smooth
+                to={target}
                 onClick={toggle}
                 className="block py-2 text-lg hover:text-gray-300"
                 key={label}
               >
                 {label}
-              </a>
+              </Link>
             ))}
           </div>
         ))}

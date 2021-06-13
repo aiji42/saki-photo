@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 import { GetStaticProps } from 'next'
 import { client } from '../libs/micro-cms'
 import { Site } from '../types/site'
@@ -17,6 +17,19 @@ export interface TopProps {
 }
 
 const Top: FC<TopProps> = ({ data }) => {
+  const menueItems = [
+    {
+      label: 'ギャラリー',
+      target: 'gallery',
+      nests: data.products.map(({ title }) => ({
+        label: title,
+        target: `gallery-${title}`
+      }))
+    },
+    { label: '料金プラン', target: 'price' },
+    { label: 'お問合せ', target: 'contact' }
+  ]
+
   return (
     <>
       <Head>
@@ -37,20 +50,7 @@ const Top: FC<TopProps> = ({ data }) => {
             className="absolute right-0 top-0 z-10"
             style={{ filter: 'drop-shadow(1px 1px 2px #000)' }}
           >
-            <Menue
-              items={[
-                {
-                  label: 'ギャラリー',
-                  href: '#gallery',
-                  nests: data.products.map(({ title }) => ({
-                    label: title,
-                    href: `#gallery-${title}`
-                  }))
-                },
-                { label: '料金プラン', href: '#price' },
-                { label: 'お問合せ', href: '#contact' }
-              ]}
-            />
+            <Menue items={menueItems} />
           </div>
         </section>
         <Concept {...data} />
