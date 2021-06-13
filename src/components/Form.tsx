@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer'
 export const Form: FC = () => {
   const { ref, inView } = useInView({
     threshold: 0,
-    rootMargin: '500px'
+    rootMargin: '800px'
   })
 
   return (
