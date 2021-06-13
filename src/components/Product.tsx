@@ -1,14 +1,19 @@
-import { FC, useRef, useState } from 'react'
+import { FC, useMemo, useRef, useState } from 'react'
 import { Product as ProductType } from '../types/site'
 import Image from 'next/image'
 import Masonry from 'react-masonry-css'
 import ImageGallery from 'react-image-gallery'
-import useLockBodyScroll from 'react-use/lib/useLockBodyScroll'
 
 export const Product: FC<ProductType> = ({ title, photos }) => {
   const [activeGallery, setActiveGallery] = useState(false)
-  useLockBodyScroll(activeGallery)
   const ref = useRef<ImageGallery>(null)
+  const galleryItems = useMemo(() => {
+    return photos.map(({ photo }) => ({
+      original: photo.url,
+      originalHeight: photo.height,
+      originalWidth: photo.width
+    }))
+  }, [])
 
   return (
     <>
@@ -56,11 +61,7 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
             ref={ref}
             startIndex={3}
             showPlayButton={false}
-            items={photos.map(({ photo }) => ({
-              original: photo.url,
-              originalHeight: photo.height,
-              originalWidth: photo.width
-            }))}
+            items={galleryItems}
             renderItem={({ original, originalHeight, originalWidth }) => (
               <Image
                 key={original}
@@ -75,10 +76,10 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
                 key={original}
                 src={original}
                 width={75}
-                height={((originalHeight ?? 0) * 75) / (originalWidth ?? 100)}
+                height={((originalHeight ?? 0) * 75) / (originalWidth ?? 75)}
               />
             )}
-            onScreenChange={(active) => setActiveGallery(active)}
+            onScreenChange={setActiveGallery}
             renderFullscreenButton={(onClick) => (
               <div className="absolute right-2 bottom-2" onClick={onClick}>
                 <img
@@ -89,6 +90,12 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
                 />
               </div>
             )}
+            showNav={false}
+            useBrowserFullscreen={false}
+            disableThumbnailScroll
+            infinite={false}
+            disableSwipe
+            useTranslate3D={false}
           />
         </div>
       </div>

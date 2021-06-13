@@ -1,0 +1,28 @@
+.image-gallery.fullscreen-modal {
+  z-index: 500;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.image-gallery.fullscreen-modal .image-gallery-content {
+  top: unset;
+  transform: unset;
+  margin-bottom: 16px;
+}
+
+.image-gallery-slides {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-gallery-slide {
+  top: unset;
+}
+
+.image-gallery-thumbnails {
+  overflow: scroll;
+  margin-bottom: 40px;
+}
