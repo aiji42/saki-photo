@@ -40,7 +40,7 @@ const Top: FC<TopProps> = ({ data }) => {
       </Head>
       <div className="font-serif bg-white leading-7">
         <div
-          className="fixed right-0 top-0 z-50"
+          className="fixed right-0 top-0 z-10"
           style={{ filter: 'drop-shadow(1px 1px 2px #000)' }}
         >
           <Menue items={menueItems} />

@@ -51,7 +51,7 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
             More
           </button>
         </div>
-        <div className={activeGallery ? '' : 'hidden'}>
+        <div className={activeGallery ? 'z-50' : 'hidden'}>
           <ImageGallery
             ref={ref}
             startIndex={3}
