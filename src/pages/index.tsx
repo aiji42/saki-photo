@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useMemo, useReducer } from 'react'
 import { GetStaticProps } from 'next'
 import { client } from '../libs/micro-cms'
 import { Site } from '../types/site'
@@ -17,18 +17,22 @@ export interface TopProps {
 }
 
 const Top: FC<TopProps> = ({ data }) => {
-  const menueItems = [
-    {
-      label: 'Gallery',
-      target: 'gallery',
-      nests: data.products.map(({ title }) => ({
-        label: title,
-        target: `gallery-${title}`
-      }))
-    },
-    { label: 'Price', target: 'price' },
-    { label: 'Contact', target: 'contact' }
-  ]
+  const menueItems = useMemo(
+    () => [
+      {
+        label: 'Gallery',
+        target: 'gallery',
+        nests: data.products.map(({ title }) => ({
+          label: title,
+          target: `gallery-${title}`
+        }))
+      },
+      { label: 'Price', target: 'price' },
+      { label: 'Contact', target: 'contact' }
+    ],
+    []
+  )
+  const [forceLoad, setForceLoad] = useReducer(() => true, false)
 
   return (
     <>
@@ -42,6 +46,7 @@ const Top: FC<TopProps> = ({ data }) => {
         <div
           className="fixed right-0 top-0 z-10"
           style={{ filter: 'drop-shadow(1px 1px 2px #000)' }}
+          onClick={setForceLoad}
         >
           <Menue items={menueItems} />
         </div>
@@ -86,7 +91,7 @@ const Top: FC<TopProps> = ({ data }) => {
         </section>
         <section id="contact">
           <Profile {...data.profile} />
-          <Form />
+          <Form forceLoad={forceLoad} />
         </section>
       </div>
     </>
@@ -97,7 +102,7 @@ export default Top
 
 export const getStaticProps: GetStaticProps<TopProps> = async () => {
   const data = await client.get<Site>({
-    endpoint: 'site',
+    endpoint: 'site'
   })
 
   return {
@@ -107,4 +112,3 @@ export const getStaticProps: GetStaticProps<TopProps> = async () => {
     revalidate: 5
   }
 }
-
