@@ -31,7 +31,7 @@ export interface Pricings {
 }
 
 export interface SnsLink {
-  type: Array<'instagram' | 'twitter' | 'line'>
+  type: Array<'instagram' | 'twitter' | 'line' | 'mail' | 'other'>
   account?: string
   url: string
 }

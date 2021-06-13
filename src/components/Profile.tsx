@@ -16,32 +16,29 @@ export const Profile: FC<ProfileType> = ({ name, icon, snsLinks, body }) => {
         />
       </div>
       <div className="mt-16">
-        <h2 className="font-heading text-lg text-center font-semibold">
-          {name}
-        </h2>
+        <h2 className="text-lg text-center font-semibold">{name}</h2>
         <div
-          className="font-serif text-sm text-center"
+          className="text-sm text-gray-600 text-center"
           dangerouslySetInnerHTML={{ __html: body ?? '' }}
         />
       </div>
-      <div className="mt-6 pt-3 text-center">
-        {snsLinks?.map(({ url, type }, index) =>
-          type.includes('instagram') ? (
-            <a
-              href={url}
-              target="__blank"
-              rel="noopener noreferrer"
-              key={index}
-            >
-              <Image
-                src="/instagram.svg"
-                alt="instagram"
-                width={25}
-                height={25}
-              />
-            </a>
-          ) : null
-        )}
+      <div className="mt-6 pt-3 flex justify-center">
+        {snsLinks?.map(({ url, type }, index) => (
+          <a
+            href={url}
+            target="__blank"
+            rel="noopener noreferrer"
+            key={index}
+            className="px-4"
+          >
+            <Image
+              src={`/${type[0]}.png`}
+              alt={type[0]}
+              width={25}
+              height={25}
+            />
+          </a>
+        ))}
       </div>
     </div>
   )
