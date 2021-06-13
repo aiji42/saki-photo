@@ -3,11 +3,9 @@ import { Product as ProductType } from '../types/site'
 import Image from 'next/image'
 import Masonry from 'react-masonry-css'
 import ImageGallery from 'react-image-gallery'
-import useLockBodyScroll from 'react-use/lib/useLockBodyScroll'
 
 export const Product: FC<ProductType> = ({ title, photos }) => {
   const [activeGallery, setActiveGallery] = useState(false)
-  useLockBodyScroll(activeGallery)
   const ref = useRef<ImageGallery>(null)
   const galleryItems = useMemo(() => {
     return photos.map(({ photo }) => ({
@@ -58,7 +56,7 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
             More
           </button>
         </div>
-        <div className={activeGallery ? 'z-50' : 'hidden'}>
+        <div className={activeGallery ? '' : 'hidden'}>
           <ImageGallery
             ref={ref}
             startIndex={3}
@@ -77,8 +75,8 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
               <Image
                 key={original}
                 src={original}
-                width={((originalWidth ?? 0) * 75) / (originalHeight ?? 75)}
-                height={75}
+                width={75}
+                height={((originalHeight ?? 0) * 75) / (originalWidth ?? 75)}
               />
             )}
             onScreenChange={setActiveGallery}
@@ -97,6 +95,7 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
             disableThumbnailScroll
             infinite={false}
             disableSwipe
+            useTranslate3D={false}
           />
         </div>
       </div>

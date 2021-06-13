@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react'
+import { FC } from 'react'
 import { GetStaticProps } from 'next'
 import { client } from '../libs/micro-cms'
 import { Site } from '../types/site'
@@ -84,10 +84,10 @@ const Top: FC<TopProps> = ({ data }) => {
             />
           )}
         </section>
-        <Profile {...data.profile} />
-        <div id="contact">
+        <section id="contact">
+          <Profile {...data.profile} />
           <Form />
-        </div>
+        </section>
       </div>
     </>
   )
