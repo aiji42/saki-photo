@@ -1,21 +1,12 @@
 import { FC } from 'react'
-import Head from 'next/head'
-import { useInView } from 'react-intersection-observer'
+import useScript from 'react-script-hook'
 
 export const Form: FC = () => {
-  const { ref, inView } = useInView({
-    threshold: 0,
-    rootMargin: '500px'
-  })
-
+  const [loading] = useScript({src: 'https://sdk.form.run/js/v2/embed.js'})
   return (
     <>
-      <Head>
-        {inView && <script src="https://sdk.form.run/js/v2/embed.js" async />}
-      </Head>
       <div
-        ref={ref}
-        className="mt-8 formrun-embed"
+        className={`mt-8 formrun-embed ${loading && 'h-screen'}`}
         data-formrun-form="@saki-photo"
       />
     </>

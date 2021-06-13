@@ -22,24 +22,23 @@ export const Profile: FC<ProfileType> = ({ name, icon, snsLinks, body }) => {
           dangerouslySetInnerHTML={{ __html: body ?? '' }}
         />
       </div>
-      <div className="mt-6 pt-3 text-center">
-        {snsLinks?.map(({ url, type }, index) =>
-          type.includes('instagram') ? (
-            <a
-              href={url}
-              target="__blank"
-              rel="noopener noreferrer"
-              key={index}
-            >
-              <Image
-                src="/instagram.svg"
-                alt="instagram"
-                width={25}
-                height={25}
-              />
-            </a>
-          ) : null
-        )}
+      <div className="mt-6 pt-3 flex justify-center">
+        {snsLinks?.map(({ url, type }, index) => (
+          <a
+            href={url}
+            target="__blank"
+            rel="noopener noreferrer"
+            key={index}
+            className="px-4"
+          >
+            <Image
+              src={`/${type[0]}.png`}
+              alt={type[0]}
+              width={25}
+              height={25}
+            />
+          </a>
+        ))}
       </div>
     </div>
   )
