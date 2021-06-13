@@ -59,7 +59,7 @@ export const Menue: FC<MenueProps> = ({ items }) => {
               smooth
               to={target}
               onClick={toggle}
-              className="block py-2 text-xl hover:text-gray-300"
+              className="block py-2 text-2xl hover:text-gray-300"
             >
               {label}
             </Link>

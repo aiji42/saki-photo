@@ -19,15 +19,15 @@ export interface TopProps {
 const Top: FC<TopProps> = ({ data }) => {
   const menueItems = [
     {
-      label: 'ギャラリー',
+      label: 'Gallery',
       target: 'gallery',
       nests: data.products.map(({ title }) => ({
         label: title,
         target: `gallery-${title}`
       }))
     },
-    { label: '料金プラン', target: 'price' },
-    { label: 'お問合せ', target: 'contact' }
+    { label: 'Price', target: 'price' },
+    { label: 'Contact', target: 'contact' }
   ]
 
   return (
@@ -39,6 +39,12 @@ const Top: FC<TopProps> = ({ data }) => {
         )}
       </Head>
       <div className="font-serif bg-white leading-7">
+        <div
+          className="fixed right-0 top-0 z-50"
+          style={{ filter: 'drop-shadow(1px 1px 2px #000)' }}
+        >
+          <Menue items={menueItems} />
+        </div>
         <section className="relative flex flex-col justify-center items-center">
           <MainVisual mainVisuals={data.mainVisuals} />
           <h1 className="font-heading absolute top-1/3 text-white text-2xl">
@@ -46,12 +52,6 @@ const Top: FC<TopProps> = ({ data }) => {
             <br />
             <span className="text-sm">photography</span>
           </h1>
-          <div
-            className="absolute right-0 top-0 z-10"
-            style={{ filter: 'drop-shadow(1px 1px 2px #000)' }}
-          >
-            <Menue items={menueItems} />
-          </div>
         </section>
         <Concept {...data} />
         <section className="py-20 text-center" id="gallery">
