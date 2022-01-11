@@ -21,20 +21,23 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap"
             rel="stylesheet"
           />
-          <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-DD9QN60LWX"
-          />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
+          {process.env.NEXT_PUBLIC_GTM_ID &&
+            <>
+              <script
+                async
+                src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
+              />
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
-            gtag('config', 'G-DD9QN60LWX');`
-            }}
-          />
+            gtag('config', '${process.env.NEXT_PUBLIC_GTM_ID}');`
+                }}
+              />
+            </>
+            }
         </Head>
         <body>
           <Main />
