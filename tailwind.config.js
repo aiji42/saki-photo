@@ -2,24 +2,16 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  purge: ['./src/**/*.tsx', './public/**/*.html'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {},
     fontFamily: {
-      heading: [
-        "Cormorant",
-        ...defaultTheme.fontFamily.serif
-      ],
-      serif: [
-        ...defaultTheme.fontFamily.serif
-      ]
+      heading: ['Cormorant', ...defaultTheme.fontFamily.serif],
+      serif: [...defaultTheme.fontFamily.serif]
     }
   },
   variants: {
-    extend: {},
+    extend: {}
   },
-  plugins: [
-    require('tailwindcss-textshadow')
-  ],
+  plugins: [require('tailwindcss-textshadow')]
 }
