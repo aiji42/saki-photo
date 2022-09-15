@@ -1,6 +1,6 @@
 import { FC, useMemo, useRef, useState } from 'react'
 import { Product as ProductType } from '../types/site'
-import Image from 'next/image'
+import Image from 'next/future/image'
 import Masonry from 'react-masonry-css'
 import ImageGallery from 'react-image-gallery'
 
@@ -40,7 +40,6 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
                 src={photo.url}
                 width={photo.width * 0.3}
                 height={photo.height * 0.3}
-                layout="responsive"
                 alt={`${title}${index + 1}枚目`}
               />
             </div>
@@ -67,7 +66,6 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
                 key={original}
                 src={original}
                 alt=""
-                layout="responsive"
                 height={(originalHeight ?? 0) * 0.3}
                 width={(originalWidth ?? 0) * 0.3}
               />
