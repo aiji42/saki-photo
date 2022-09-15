@@ -13,7 +13,7 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
       originalHeight: photo.height,
       originalWidth: photo.width
     }))
-  }, [])
+  }, [photos])
 
   return (
     <>
@@ -66,6 +66,7 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
               <Image
                 key={original}
                 src={original}
+                alt=""
                 layout="responsive"
                 height={(originalHeight ?? 0) * 0.3}
                 width={(originalWidth ?? 0) * 0.3}
@@ -75,6 +76,7 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
               <Image
                 key={original}
                 src={original}
+                alt=""
                 width={75}
                 height={((originalHeight ?? 0) * 75) / (originalWidth ?? 75)}
               />
@@ -86,6 +88,7 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
                   src="/close-icon.svg"
                   className="w-8"
                   loading="lazy"
+                  alt=""
                   style={{ filter: 'drop-shadow(1px 1px 2px #000)' }}
                 />
               </div>
