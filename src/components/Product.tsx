@@ -10,6 +10,7 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
   const galleryItems = useMemo(() => {
     return photos.map(({ photo }) => ({
       original: photo.url,
+      thumbnail: photo.url,
       originalHeight: photo.height,
       originalWidth: photo.width
     }))
@@ -38,8 +39,10 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
               <Image
                 key={index}
                 src={photo.url}
-                width={photo.width * 0.3}
-                height={photo.height * 0.3}
+                width={photo.width}
+                height={photo.height}
+                style={{ maxWidth: '100%', height: 'auto' }}
+                sizes="100vw"
                 alt={`${title}${index + 1}枚目`}
               />
             </div>
@@ -66,14 +69,21 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
                 key={original}
                 src={original}
                 alt=""
-                height={(originalHeight ?? 0) * 0.3}
-                width={(originalWidth ?? 0) * 0.3}
+                style={{ maxWidth: '100%', height: 'auto' }}
+                sizes="100vw"
+                height={originalHeight ?? 0}
+                width={originalWidth ?? 0}
               />
             )}
-            renderThumbInner={({ original, originalHeight, originalWidth }) => (
+            renderThumbInner={({
+              thumbnail,
+              original,
+              originalHeight,
+              originalWidth
+            }) => (
               <Image
-                key={original}
-                src={original}
+                key={thumbnail}
+                src={thumbnail ?? original}
                 alt=""
                 width={75}
                 height={((originalHeight ?? 0) * 75) / (originalWidth ?? 75)}
