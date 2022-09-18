@@ -103,10 +103,10 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
             )}
             showNav={false}
             useBrowserFullscreen={false}
-            disableThumbnailScroll
-            infinite={false}
+            // disableThumbnailScroll
+            // infinite={false}
             disableSwipe
-            useTranslate3D={false}
+            // useTranslate3D={false}
           />
         </div>
       </div>
