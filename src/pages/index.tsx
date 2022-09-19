@@ -30,7 +30,7 @@ const Top: FC<TopProps> = ({ data }) => {
       { label: 'Price', target: 'price' },
       { label: 'Contact', target: 'contact' }
     ],
-    []
+    [data.products]
   )
   const [forceLoad, setForceLoad] = useReducer(() => true, false)
 

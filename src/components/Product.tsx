@@ -1,6 +1,6 @@
 import { FC, useMemo, useRef, useState } from 'react'
 import { Product as ProductType } from '../types/site'
-import Image from 'next/image'
+import Image from 'next/future/image'
 import Masonry from 'react-masonry-css'
 import ImageGallery from 'react-image-gallery'
 
@@ -10,10 +10,11 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
   const galleryItems = useMemo(() => {
     return photos.map(({ photo }) => ({
       original: photo.url,
+      thumbnail: photo.url,
       originalHeight: photo.height,
       originalWidth: photo.width
     }))
-  }, [])
+  }, [photos])
 
   return (
     <>
@@ -38,9 +39,10 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
               <Image
                 key={index}
                 src={photo.url}
-                width={photo.width * 0.3}
-                height={photo.height * 0.3}
-                layout="responsive"
+                width={photo.width}
+                height={photo.height}
+                style={{ maxWidth: '100%', height: 'auto' }}
+                sizes="100vw"
                 alt={`${title}${index + 1}枚目`}
               />
             </div>
@@ -66,15 +68,23 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
               <Image
                 key={original}
                 src={original}
-                layout="responsive"
-                height={(originalHeight ?? 0) * 0.3}
-                width={(originalWidth ?? 0) * 0.3}
+                alt=""
+                style={{ maxWidth: '100%', height: 'auto' }}
+                sizes="100vw"
+                height={originalHeight ?? 0}
+                width={originalWidth ?? 0}
               />
             )}
-            renderThumbInner={({ original, originalHeight, originalWidth }) => (
+            renderThumbInner={({
+              thumbnail,
+              original,
+              originalHeight,
+              originalWidth
+            }) => (
               <Image
-                key={original}
-                src={original}
+                key={thumbnail}
+                src={thumbnail ?? original}
+                alt=""
                 width={75}
                 height={((originalHeight ?? 0) * 75) / (originalWidth ?? 75)}
               />
@@ -86,16 +96,14 @@ export const Product: FC<ProductType> = ({ title, photos }) => {
                   src="/close-icon.svg"
                   className="w-8"
                   loading="lazy"
+                  alt=""
                   style={{ filter: 'drop-shadow(1px 1px 2px #000)' }}
                 />
               </div>
             )}
             showNav={false}
             useBrowserFullscreen={false}
-            disableThumbnailScroll
-            infinite={false}
             disableSwipe
-            useTranslate3D={false}
           />
         </div>
       </div>
