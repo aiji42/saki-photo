@@ -32,7 +32,7 @@ const Top: FC<TopProps> = ({ data }) => {
     ],
     [data.products]
   )
-  
+
   return (
     <>
       <Head>
