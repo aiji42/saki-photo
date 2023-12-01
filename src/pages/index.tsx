@@ -1,4 +1,4 @@
-import { FC, useMemo, useReducer } from 'react'
+import { FC, useMemo } from 'react'
 import { GetStaticProps } from 'next'
 import { client } from '../libs/micro-cms'
 import { Site } from '../types/site'
