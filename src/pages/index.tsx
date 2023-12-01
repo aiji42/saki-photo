@@ -32,7 +32,6 @@ const Top: FC<TopProps> = ({ data }) => {
     ],
     [data.products]
   )
-  const [forceLoad, setForceLoad] = useReducer(() => true, false)
 
   return (
     <>
@@ -46,7 +45,6 @@ const Top: FC<TopProps> = ({ data }) => {
         <div
           className="fixed right-0 top-0 z-10"
           style={{ filter: 'drop-shadow(1px 1px 2px #000)' }}
-          onClick={setForceLoad}
         >
           <Menue items={menueItems} />
         </div>
@@ -91,7 +89,7 @@ const Top: FC<TopProps> = ({ data }) => {
         </section>
         <section id="contact">
           <Profile {...data.profile} />
-          <Form forceLoad={forceLoad} />
+          <Form />
         </section>
       </div>
     </>
