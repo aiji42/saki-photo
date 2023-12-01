@@ -54,7 +54,7 @@
                 (t = 'https://form.run/embed/' + t),
                 (r = document.createElement('iframe')).setAttribute('src', t),
                 r.setAttribute('frameborder', 'no'),
-                r.setAttribute('loading', 'lazy'),
+                // r.setAttribute('loading', 'lazy'),
                 (r.style.backgroundColor = '#FFFFFF'),
                 (r.style.width = '100%'),
                 (r.style.height = '0'),
